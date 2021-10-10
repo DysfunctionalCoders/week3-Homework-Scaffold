@@ -25,6 +25,8 @@ body {
 }
 /* TODO: this container class in the center of the screen using flex-direction column */
 .container {
+    display: flex;
+    flex-direction: column;
     align-items: center;
     margin-top: 8px;
 }
@@ -109,7 +111,11 @@ Section - Modal
 /* Modal (background) */
 .modal {
     /*Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
     display: block;
+    display: none;
     width: 100%;
     height: 100%;
     /* Fallback color */
@@ -121,7 +127,10 @@ Section - Modal
 /* Modal Content/Box */
 /* TODO: Style this and make it look better */
 .modal-content {
-    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin: 5% auto;
     width: 80%;
 }

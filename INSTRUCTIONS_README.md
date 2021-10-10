@@ -12,12 +12,15 @@ Why does querySelectAll give us an array of elements?
 
 
 1. (X) Connect the given javascript file to your HTML 
+       
 2. (X) Connect the given styles file to your HTML
-3. (X) Use the styles file to center the container class element in the middle of the screen using flexbox use a flex direction of column
+      
+3. (X) Use the styles file to center the container class element in the middle of the screen 
+
 4.  In your HTML file, inside of the section element that has a class of "win-game-modal", Create a div in your HTML that has a class of modal and id of modal
-	1. add a child div to that modal and give it class of modal-content
+	1. add a child div to that modal and give it class of modal-content -->
 	2. The next 6 steps all happen in the div.modal-content element
-		1. add a span with an id of close
+		1. add a span with an id of close  
 		2. inside of the span with the id of close, type &times; in the opening and closing span tags.
 		3.  inform the user that they won and found all 8 pairs of cards
 		4. Show the vault-boy-thumb-up image
@@ -25,18 +28,25 @@ Why does querySelectAll give us an array of elements?
 		6. (X) Style the modal content and make it look good  (try display flex, justify content center, flex direction column, align items center)
 	3. Once your done styling the modal class implement the following changes
 		1. give your modal class
-			1. (X) position: fixed
+			1. (X) position: fixed -->
 			2. (X) top: 0
 			3. (X) left: 0
 			4. (X) display: none
 5. Go to the JS file and look over the code, using the steps below will guide you on fixing the code.
 	1. (X) Go to the startGame function and implement the pseudo code
+      this function shuffles the cards and creates the table for which the cards are placed.
 	2. (X) Go to the compareTwo function and implement the pseudo code
+      this function compares two of the cards clicked. it will either time out and console log no match, or if it is a match then it will display the matched cards.
 	3. (X) Go the displayMatching Cards function and complete the unimplemented pseudo code
+      the displaymatching card and not matching cards are used for the compare function. Theyll flip the card back over or keep the paired ones visible to see.
 	4. (X) Go to the checkIsGameFinished and implement pseudo code
+      this code checks if the game is finished after each matched pair found to see if there are 16 pairs found. then it will end the game showing the modal
+
 	5. (X) Go to the addStatsToModal function and complete the unimplemented pseudocode
+    this code shows the stats in the modal showing (the time it took, the amount of moves, starcount)
 		1. Also change the innerHTML for the p tags so that they have useful information in it to the user.
 	6. (X) Go to the displayModal function and complete the unimplemented pseudocode
+    
 
 Stuck??
 - After each major step, click through the game and see if any errors come up. If an error comes up refer to steps above and corresponding pseudo code to ensure to implemented it correctly.
