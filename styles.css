@@ -3,9 +3,7 @@
     padding: 0;
 }
 
-*,
-*::before,
-*::after {
+*, *::before, *::after {
     box-sizing: inherit;
 }
 
@@ -15,7 +13,7 @@ html {
 
 body {
     /* Background pattern from Subtle Patterns */
-    /*background: url('img/ignasi_pattern_s.png');*/
+    background: url('./img/ignasi_pattern_s.png');
     font-family: "Open Sans", sans-serif;
     /*one Em roughly ten pixels (16 x 62.5% = 10)*/
     font-size: 62.5%;
@@ -23,18 +21,21 @@ body {
     margin: 0;
     text-align: center;
 }
-/* TODO: this container class in the center of the screen using flex-direction column */
+
 .container {
+    max-height: 80vh;
+    max-width: 100vw;
     align-items: center;
     margin-top: 8px;
+    display: flex;
+    flex-direction: column;
 }
 
-ul > li {
+ul>li {
     list-style: none;
 }
 
-.card,
-.reset-btn {
+.card, .reset-btn {
     cursor: pointer;
 }
 
@@ -56,12 +57,12 @@ h1 {
 }
 
 h2 {
-    font-size: 40px;
+    font-size: 32px;
     font-weight: 600;
 }
 
 p {
-    font-size: 24px;
+    font-size: 18px;
 }
 
 h3 {
@@ -73,11 +74,13 @@ Section - Score Panel
 ------------------------------------*/
 
 .score-panel {
-    font-size: 22px;
+    width: 100vw;
+    display: inline-block;
+    font-size: 24px;
     padding: 16px 0 32px;
 }
 
-.star-rating > li {
+.star-rating>li {
     display: inline-block;
     padding: 8px;
 }
@@ -107,44 +110,94 @@ Section - Modal
 ------------------------------------*/
 
 /* Modal (background) */
+
 .modal {
-    /*Hidden by default */
-    display: block;
+    display: none; 
     width: 100%;
     height: 100%;
     /* Fallback color */
     background-color: rgb(46, 61, 73);
     /* With opacity */
     background-color: rgba(46, 61, 73, 0.6);
+    position: fixed;
+    top: 0px;
+    left: 0;
 }
 
 /* Modal Content/Box */
+
 /* TODO: Style this and make it look better */
+
+.modal-container {
+    position: absolute;
+    width: 70vw;
+    height: 70vh;
+    left: 15vw;
+    right: 15vw;
+    top: 5vw;
+    bottom: 25vw;
+    display: block;
+    background-color: white;
+    border: darkblue solid 0.5em;
+    border-radius: 2%;
+}
 .modal-content {
-    
-    margin: 5% auto;
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.modal-upper {
+    position: absolute;
     width: 80%;
+    margin: 1em 10% 0 10%;
+    top: 0;
+    height: 55%;
+}
+.modal-lower {
+    position: absolute;
+    width: 100%;
+    height: 43%;
+    margin: auto;
+    bottom: 0vh;
+}
+ .modal-results {
+    position: absolute;
+    margin: auto;
+    top: 1vh;
+    bottom: 10vh;
+    right: 10vw;
+    left: 10vw;
+    font-size: 5vmax;
 }
 
 /* The Close Button */
+
 #close {
-    align-self: flex-end;
+    position: absolute;
+    width: 8vmin;
+    height: 8vmin;
+    top: 0%;
+    right: 0%;
     color: #28e;
-    font-size: 80px;
+    font-size: 7vmin;
+    z-index: 10;
 }
 
-#close:hover,
-#close:focus {
+#close:hover, #close:focus {
     color: #5cf;
     text-decoration: none;
     cursor: pointer;
 }
 
 /* Modal Image*/
+
 .modal-img {
     display: inline-block;
-    margin: 16px 0 16px;
-    width: 320px;
+    margin: 4px 0 4px;
+    height: 150px;
+    width: max-content;
 }
 
 p.stats {
@@ -156,14 +209,20 @@ p.stats:last-child {
 }
 
 .play-again-btn {
+    position: absolute;
+    width: 24vw;
+    height: 8vh;
+    bottom: 0%;
+    margin: 0 -4vh 16px -12vw;
     background: #28e;
-    margin-bottom: 16px;
 }
 
 /*----------------------------------
 Deck of Cards
 ------------------------------------*/
+
 /*Mobile first responsiveness*/
+
 .deck {
     background: #5cf;
     border-radius: 24px;
@@ -177,8 +236,7 @@ Deck of Cards
     width: 576px;
 }
 
-.deck,
-.card {
+.deck, .card {
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
 }
 
@@ -193,6 +251,7 @@ Deck of Cards
 To disable the color highlight if and img is clicked
 https://stackoverflow.com/questions/21107439/disable-or-change-firefoxs-element-image-highlight-color
 */
+
 img {
     user-select: none;
     width: 96px;
@@ -239,26 +298,21 @@ img {
 }
 
 @media screen and (min-width: 550px) {
-
-    .deck  {
+    .deck {
         height: 800px;
         padding: 32px;
         width: 800px;
     }
-
     .card {
         height: 160px;
         width: 160px;
     }
-
     .deck img {
         width: 144px;
     }
-
     .modal-content h2 {
         font-size: 64px;
     }
-
     .play-again-btn {
         font-size: 28px;
     }
@@ -267,48 +321,35 @@ img {
 /*----------------------------------
 Desktops
 ------------------------------------*/
+/* 
 @media screen and (min-width: 800px) {
-
     h1 {
-        font-size: 96px;
+        font-size: 48px;
     }
-
     p {
-        font-size: 36px;
+        font-size: 24px;
     }
-
-    .deck  {
+    .deck {
         height: 1120px;
         width: 1120px;
     }
-
     .card {
         height: 240px;
         width: 240px;
     }
-
     .deck img {
         width: 208px;
     }
-
     .reset-btn {
-        font-size: 32px;
+        font-size: 24px;
     }
-
     .footer {
-        font-size: 18px;
+        font-size: 14px;
     }
-
     .modal-content h2 {
-        font-size: 80px;
+        font-size: 36px;
     }
-
-    /* Modal Image*/
-    .modal-img {
-        width: 480px;
-    }
-
     .play-again-btn {
-        font-size: 32px;
-    }
+        font-size: 24px;
+    } */
 }
