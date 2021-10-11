@@ -11,9 +11,9 @@ Why does querySelectAll give us an array of elements?
 
 
 
-1. (X) Connect the given javascript file to your HTML 
-2. (X) Connect the given styles file to your HTML
-3. (X) Use the styles file to center the container class element in the middle of the screen using flexbox use a flex direction of column
+1. (X) Connect the given javascript file to your HTML -- used the relative path inside a script tag to connect the index.js file which includes the javascript for the index.html file, nothing change in the browser
+2. (X) Connect the given styles file to your HTML -- linked the stylesheet to the index.html file using relative path, the layout and the format of the text changed when index.html displayed in browser
+3. (X) Use the styles file to center the container class element in the middle of the screen using flexbox use a flex direction of column - used flex box to put items in container in flex direction column, and then used align-items to center the deck
 4.  In your HTML file, inside of the section element that has a class of "win-game-modal", Create a div in your HTML that has a class of modal and id of modal
 	1. add a child div to that modal and give it class of modal-content
 	2. The next 6 steps all happen in the div.modal-content element
@@ -22,21 +22,22 @@ Why does querySelectAll give us an array of elements?
 		3.  inform the user that they won and found all 8 pairs of cards
 		4. Show the vault-boy-thumb-up image
 		5. add a button with a class of btn and play-again-btn with text that reads "Play Again?"
-		6. (X) Style the modal content and make it look good  (try display flex, justify content center, flex direction column, align items center)
+		6. (X) Style the modal content and make it look good  (try display flex, justify content center, flex direction column, align items center) - center the image and button under the image
 	3. Once your done styling the modal class implement the following changes
 		1. give your modal class
 			1. (X) position: fixed
 			2. (X) top: 0
 			3. (X) left: 0
-			4. (X) display: none
+			4. (X) display: none - modal has moved to the top center and X is on top right of screen
 5. Go to the JS file and look over the code, using the steps below will guide you on fixing the code.
-	1. (X) Go to the startGame function and implement the pseudo code
-	2. (X) Go to the compareTwo function and implement the pseudo code
-	3. (X) Go the displayMatching Cards function and complete the unimplemented pseudo code
-	4. (X) Go to the checkIsGameFinished and implement pseudo code
-	5. (X) Go to the addStatsToModal function and complete the unimplemented pseudocode
+	1. (X) Go to the startGame function and implement the pseudo code -added the yellow card blocks to the deck
+	2. (X) Go to the compareTwo function and implement the pseudo code - determines if there are two cards selected, if the src matches it is a match if not no match
+	3. (X) Go the displayMatching Cards function and complete the unimplemented pseudo code - keeps the selected matching cards displayed and allows selecting more cards
+	4. (X) Go to the checkIsGameFinished and implement pseudo code - if all cards have been flipped, stopped the time, log the stags, display the winner modal
+  when implemented got a innerHtml error line 225
+	5. (X) Go to the addStatsToModal function and complete the unimplemented pseudocode - cleared the innerHtml error above, modal not displayed get modalClosed not defined error line 242
 		1. Also change the innerHTML for the p tags so that they have useful information in it to the user.
-	6. (X) Go to the displayModal function and complete the unimplemented pseudocode
+	6. (X) Go to the displayModal function and complete the unimplemented pseudocode - fixed error above.
 
 Stuck??
 - After each major step, click through the game and see if any errors come up. If an error comes up refer to steps above and corresponding pseudo code to ensure to implemented it correctly.
