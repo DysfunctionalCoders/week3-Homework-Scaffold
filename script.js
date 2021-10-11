@@ -23,35 +23,29 @@ function shuffle(array) {
 
   while (currentIndex !== 0) {
     randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temporaryValue;
+    currentIndex --;
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
   }
   return array;
 }
 
-// TODO: Implement this function
 function startGame() {
   // Invoke shuffle function and store in variable
   const shuffledDeck = shuffle(deckCards);
-  // Implement a for loop on the shuffledDeck array
-  
-    // Create the <td> tags and assign it to a variable called tdTag
-    
-    // Give tdTag Element a class of card
-    
-    // Create the <img> tag and assign it to an addImage variable
-    
-    // make the addImage a child of the tdTag
-    
-    // Set the addImage element src path with the shuffled deck
-    // TODO: replace the REPLACE ME string with the element in the shuffledDeck array at index i
-    addImage.setAttribute('src', 'img/' + 'REPLACE ME with the element in shuffleDeck at index i');
-    // Add an alt tag to the addImage element
-    addImage.setAttribute('alt', 'image of vault boy from fallout');
-    // make the tdTag element a child of the deck element
-    
+  console.log(shuffledDeck);
+  for (let i=0; i < shuffledDeck.length; i++) {
+    let tdTag = document.createElement('td');
+    tdTag.setAttribute('class', 'card');
+    let addImage = document.createElement(`img`);
+    tdTag.append(addImage);
+    let fileName = `${shuffledDeck[i]}`;
+    let imgAlt = fileName.split('.')[0];
+    addImage.setAttribute('id', imgAlt);
+    addImage.setAttribute('src', `./img/${fileName}`);
+    addImage.setAttribute('alt', `Image of ${imgAlt}.`);
+    deck.appendChild(tdTag)
+  }
 }
 
 startGame();
@@ -122,32 +116,20 @@ function adjustStarRating() {
   }
 }
 
-
-// TODO: stub out this function after the compare the two images src comment
 function compareTwo() {
   // When there are 2 cards in the opened array
   if (opened.length === 2) {
     // Disable any further mouse clicks on other cards
-    document.body.style.pointerEvents = "none";
+    if (opened[0].src === opened[1].src){
+      console.log("It's a Match");
+      displayMatchingCards();
+    } else {
+      console.log("No Match!");
+      displayNotMatchingCards();
+    }
   }
-  // Compare the two images src in the opened array
-  // TODO: implement
-  // if the opened array has a length of two && the element at index = 0 src string
-  // equals the element at index 1 src string
-  // the image srcs match
-  
-    // TODO: Invoke the displayMatchingCards()
-    // TODO: console log "It's a Match!"  
-    
-    
-  // TODO: if the image src's do not match
-  
-    // TODO: invoke the displayNotMatchingCards()
-    // TODO: console log "No Match!"
-  
 }
 
-// TODO:
 function displayMatchingCards() {
   /* Access the two cards in opened array and add
   the class of match to the imgages parent: the <li> tag
@@ -157,12 +139,10 @@ function displayMatchingCards() {
       // the match class should make the img visible
     opened[0].parentElement.classList.add("match");
     opened[1].parentElement.classList.add("match");
-    // TODO: Push the flipped cards (opened[0] and opened[1]) to the matched array
-    
-    // Allow for further mouse clicks on cards
+    matched.push(opened[0]);
+    matched.push(opened[1]);
     document.body.style.pointerEvents = "auto";
-    // TODO: invoke the checkIsGameFinished function
-    
+    checkIsGameFinished();
    
     // Clear the opened array
     opened = [];
@@ -191,41 +171,37 @@ function displayNotMatchingCards() {
 
 function addStatsToModal() {
   // Access the modal content div
-  const statsParent = document.querySelector(".modal-content");
+  const statsParent = document.querySelector(".modal-results");
   // Create three different paragraphs
+  statsParent.getElementsByTagName('p');
   for (let i = 1; i <= 3; i++) {
-    // Create a new Paragraph
-    // TODO: create p tag and assign it a newly created statsElement variable
-    
-    // Add a class to the new Paragraph
-    // TODO: add the stats class to the statsElement
-    
-    
-    // Add the new created <p> tag to the modal content
-    // TODO: add the statsElement as a child of the statsParent element
-    
+    let statsElement = document.createElement('p');
+    statsElement.setAttribute('class', 'stats');
+    statsParent.appendChild(statsElement);
   }
   // Select all p tags with the class of stats and update the content
   let p = statsParent.querySelectorAll("p.stats");
   // Set the new <p> to have the content of stats (time, moves and star rating)
-  // TODO: Update all of the innerHTML text appropriately
-  p[0].innerHTML = "Update the time here with the minutes and seconds";
-  p[1].innerHTML = "Update this with how many moves it took";
-  p[2].innerHTML = "Update this with the star rating";
+  let starDisplay = "";
+  for (let s=0; s <= starCount; s++){
+    starDisplay += `&#9733;`;
+  }
+  console.log(starDisplay);
+  p[0].innerHTML = `Total Time: ${minutes} min ${seconds} sec`;
+  p[1].innerHTML = `Total Moves: ${moves}`;
+  p[2].innerHTML = `${starDisplay}`;
+  p[2].setAttribute('style', 'color: gold');
 }
 
 // TODO: Implement the pseudocode
 function displayModal() {
-// use getElementByID to grab the id="close" element and assign it to a variable called modalClose
-
-// use getElementByID to grab the id="modal" element and assign it to a variable called modal
-
-// Set modal to display block to show it
-
+  let modalClose = document.getElementById("close");
+  let modal = document.getElementById("modal");
+  modal.setAttribute("style", "display:block");
 
 // When the user clicks on the modalClose <span> (x), 
 modalClose.onclick = function() {
-    // set modal to diplay none
+    modal.style.display = "none";
     
 };
 // When the user clicks anywhere outside of the modal, close it
@@ -241,18 +217,11 @@ modalClose.onclick = function() {
 function checkIsGameFinished() {
   // there are 8 images total
   // if the matched array has 16 elements,
-  if (matched.length === 16) {
-    // stop the game
-    //TODO: invoke the stopTime function
-    
-    // tally stats
-    // TODO: invoke the addStatsToModal
-    
-    
-    // display modal
-    // TODO: invoke the displayModal function
-    
-    
+  console.log('Matched: ', matched.length);
+  if (matched.length === 2) {
+    stopTime();
+    addStatsToModal();
+    displayModal();
   }
 }
 
@@ -264,7 +233,7 @@ function checkIsGameFinished() {
 deck.addEventListener("click", function(evt) {
   if (evt.target.nodeName === "TD") {
     // To console if I was clicking the correct element
-    console.log(evt.target.nodeName + " Was clicked");
+    //console.log(evt.target.nodeName + " Was clicked");
     // Start the timer after the first click of one card
     // Executes the timer() function
     if (timeStart === false) {
