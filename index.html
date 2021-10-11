@@ -6,7 +6,8 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Fallout Memory Game</title>
-    <!-- TODO: Connect the given styles file to this HTML -->
+    <link rel="stylesheet" href="./styles/styles.css">
+    
 </head>
 <body>
     <div class="container">
@@ -34,13 +35,24 @@
         <table>
             <tr class="deck"></tr>
         </table>
+        
     </div>
 
     <!-- Modal -->
     <section class="win-game-modal">
-        
-    </section>
+        <div id="modal" class="modal">
+          <!-- Modal content -->
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Congratulations!</h2>
+            <p>You have won the game and found all 8 pairs of cards.</p>
+            <img class="modal-img" src="img/Vault-Boy-Thumb-Up.jpg" alt="Vault boy giving the thumbs up from the game fall out">
+            <button class="btn play-again-btn">Play Again?</button>
+          </div>
+        </div>
+      </section>
 
-    <!-- TODO: Connect the given JS file to your HTML -->
+      <script  src="./js/index.js"></script>
 </body>
+
 </html>
